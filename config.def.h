@@ -7,7 +7,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Terminus:size=9" };
 static const char dmenufont[]       = "Terminus:size=9";
-static const char col_gray1[]       = "#222222";
+static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
@@ -39,7 +39,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[|]",      tile },    /* first entry is default */
+	{ "[+]",      tile },    /* first entry is default */
 	{ "[ ]",      monocle },
 };
 
@@ -71,16 +71,19 @@ static Key keys[] = {
 	//{ SUPKEY,                       XK_5,      spawn,          SHCMD("spyder") },
 	//{ SUPKEY,                       XK_6,      spawn,          SHCMD("virt-manager") },
 	//{ SUPKEY,                       XK_7,      spawn,          SHCMD("jetbrains-toolbox") },
-	{ SUPKEY,                       XK_8,      spawn,          SHCMD("simple-scan") },
+	//{ SUPKEY,                       XK_8,      spawn,          SHCMD("simple-scan") },
 	{ SUPKEY,                       XK_9,      spawn,          SHCMD("chromium") },
 	{ SUPKEY,                       XK_0,      spawn,          SHCMD("tilix -e btop") },
-	// Special commands.
+	// Special key commands.
     { 0,                            XF86XK_MonBrightnessUp, spawn, SHCMD("xbacklight -inc 10") },
     { 0,                            XF86XK_MonBrightnessDown, spawn, SHCMD("xbacklight -dec 10") },
     { 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("amixer -D pulse sset Master 10%+") },
     { 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("amixer -D pulse sset Master 10%-") },
     { 0,                            XF86XK_AudioMute, spawn, SHCMD("amixer -D pulse sset Master toggle") },
     { 0,                            XF86XK_AudioMicMute, spawn, SHCMD("amixer set Capture toggle") },
+    { ALTKEY,                       XK_Print,            spawn, SHCMD("flameshot gui -p /home/necronzero/Pictures/Screenshots") },
+    { SUPKEY,                       XK_Print,            spawn, SHCMD("flameshot full -p /home/necronzero/Pictures/Screenshots") },
+    { 0,                            XF86XK_Favorites,    spawn, SHCMD("groff -mom /home/necronzero/.config/help.mom -Tpdf | zathura -") },
     // Default Commands.
 	{ ALTKEY,                       XK_r,      spawn,          SHCMD("rofi -show drun") },
 	{ SUPKEY,                       XK_Return, spawn,          SHCMD("tilix") },
@@ -133,4 +136,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            ALTKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            ALTKEY,         Button3,        toggletag,      {0} },
 };
-
